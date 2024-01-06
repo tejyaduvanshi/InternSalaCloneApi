@@ -32,7 +32,8 @@ app.use(fileupload());
 
 
 //routes
-app.use("/" , require("./routes/indexRouter"))
+app.use("/user" , require("./routes/indexRouter"))
+app.use("/resume" , require("./routes/resumeRouter"))
 
 
 

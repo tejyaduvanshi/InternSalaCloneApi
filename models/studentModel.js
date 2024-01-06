@@ -6,7 +6,7 @@ const studentModel =new mongoose.Schema({
     firstname :{
         type:String,
         required:[true, "First Name is required"],
-        minLength: [4,"Min length must be 4 character long"]
+        minLength: [3,"Min length must be 4 character long"]
 
     },
     lastname :{
@@ -53,6 +53,17 @@ const studentModel =new mongoose.Schema({
     resetPasswordToken : {
         type: String,
         default: "0",
+    },
+    resume : {
+        education :[],
+        jobs:[],
+        internships:[],
+        responsibilities:[],
+        courses:[],
+        projects:[],
+        skills:[],
+        accomplishments:[],
+
     },
 },{timestamps:true}) //timestamp give updation time  creation time of studentmodel
 
