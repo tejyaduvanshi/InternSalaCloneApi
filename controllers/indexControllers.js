@@ -6,6 +6,8 @@ const { sendtoken } = require("../utils/sendToken")
 const { sendmail } = require("../utils/nodemailer")
 const imagekit = require("../utils/imagekit").initImagekit();
 const path = require("path")
+const Internship = require("../models/internshipModel")
+const Job = require("../models/jobModel")
 
 //homepage /route
 
@@ -162,5 +164,39 @@ exports.studentavatar = catchAsyncErrors(async (req,res,next)=>{
         message:"profile saved successfully"
     })
     // res.json({file : req.files.avatar})
+  
+})
+
+
+//----------------Apply Internship-------------------------------------------------------------------
+
+exports.applyinternship = catchAsyncErrors(async (req,res,next)=>{
+
+    const student =await Student.findById(req.id).exec();
+    const internship =await Internship.findById(req.params.internshipid).exec();
+
+    student.internships.push(internship._id);
+    internship.students.push(student._id)
+    await student.save();
+    await internship.save();
+    res.json({student , internship})
+
+  
+})
+
+//----------------Apply jobs-------------------------------------------------------------------
+
+
+exports.applyjob = catchAsyncErrors(async (req,res,next)=>{
+
+    const student =await Student.findById(req.id).exec();
+    const job =await Job.findById(req.params.jobid).exec();
+
+    student.jobs.push(job._id);
+    job.students.push(student._id)
+    await student.save();
+    await job.save();
+    res.json({student ,job})
+
   
 })
