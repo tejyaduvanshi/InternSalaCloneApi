@@ -56,7 +56,6 @@ const employeModel =new mongoose.Schema({
     }],
     jobs:[{
         type:mongoose.Schema.Types.ObjectId , ref : "jobs"
-
     }],
 
 },{timestamps:true}) //timestamp give updation time  creation time of studentmodel

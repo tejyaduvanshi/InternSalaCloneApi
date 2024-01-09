@@ -65,6 +65,12 @@ const studentModel =new mongoose.Schema({
         accomplishments:[],
 
     },
+    internships:[{
+        type:mongoose.Schema.Types.ObjectId , ref : "internships"
+    }],
+    jobs:[{
+        type:mongoose.Schema.Types.ObjectId , ref : "jobs"
+    }],
 },{timestamps:true}) //timestamp give updation time  creation time of studentmodel
 
 
